@@ -1,5 +1,6 @@
 package com.example.encoratask.core.repository
 
+import com.example.encoratask.core.common.Exceptions
 import com.example.encoratask.core.common.Result
 import com.example.encoratask.core.model.Character
 import com.example.encoratask.core.network.api.RyMService
@@ -15,9 +16,9 @@ class RYMDataSource(private val service: RyMService, private val mapper: RYMMapp
                 if(response.isSuccessful){
                     return@withContext Result.Success(mapper.toList(response.body()))
                 }else
-                    return@withContext Result.Error(Exception("No se encontro la lista"))
+                    return@withContext Result.Error(Exception(Exceptions.NoInternet))
             }catch(e: Exception){
-                return@withContext Result.Error(Exception(e.message.toString()))
+                return@withContext Result.Error(Exception(Exceptions.NoInternet))
             }
         }
 
@@ -28,9 +29,9 @@ class RYMDataSource(private val service: RyMService, private val mapper: RYMMapp
                 if(response.isSuccessful){
                     return@withContext Result.Success(mapper.toCharacter(response.body()))
                 }else
-                    return@withContext Result.Error(Exception("No se encontro la lista"))
+                    return@withContext Result.Error(Exception(Exceptions.NoInternet))
             }catch(e: Exception){
-                return@withContext Result.Error(Exception(e.message.toString()))
+                return@withContext Result.Error(Exception(Exceptions.NoInternet))
             }
         }
 }

@@ -10,7 +10,7 @@ class LayoutUtils {
 
         fun showSnack(view: View, message: String) {
             val snackbar = Snackbar.make(view, message, Snackbar.LENGTH_SHORT)
-            snackbar.setTextColor(ResourcesCompat.getColor(view.context.resources, R.color.colorPrimary,null))
+            snackbar.setTextColor(ResourcesCompat.getColor(view.context.resources, R.color.colorAccent,null))
             snackbar.show()
         }
     }
